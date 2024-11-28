@@ -1,0 +1,12 @@
+{
+    "id": "{389A0DEF-09EF-EC9E-80C7-765C90340BEA}",
+    "name": "DWIPSThermostaticController",
+    "type": 3,
+    "vendor": "DWIPS",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "DWIPSTC",
+    "url": "https://github.com/Daniel81W/DWIPSThermostaticController"
+}
