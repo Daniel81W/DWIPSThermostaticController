@@ -1,2 +1,2 @@
 # DWIPSThermostaticController
-IP_Symcon Modul zur Raumtemperaturregelung
+IP-Symcon Modul zur Raumtemperaturregelung
