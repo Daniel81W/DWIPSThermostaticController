@@ -1,0 +1,12 @@
+{
+    "id": "{2809E310-DDD5-E4FD-4331-8C226257DDAA}",
+    "name": "DWIPSThermostaticController",
+    "author": "Daniel Weber",
+    "url": "https://github.com/Daniel81W/DWIPSThermostaticController",
+    "compatibility": {
+        "version": "7.0"
+    },
+    "version": "0.1",
+    "build": 0,
+    "date": 0
+}

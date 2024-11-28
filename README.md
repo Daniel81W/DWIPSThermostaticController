@@ -1,2 +1,6 @@
 # DWIPSThermostaticController
-IP-Symcon Modul zur Raumtemperaturregelung
+
+Folgende Module beinhaltet das DWIPSThermostaticController Repository:
+
+- __DWIPSThermostaticController__ ([Dokumentation](DWIPSThermostaticController))  
+	Kurze Beschreibung des Moduls.
