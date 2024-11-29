@@ -2,7 +2,9 @@
     "translations": {
         "de": {
             "Target Temp": "Solltemperatur",
+            "Target Temp Variable": "Solltemperaturvariable",
             "Actual Temp": "Isttemperatur",
+            "Actual Temp Variable": "Isttemperaturvariable",
             "Output Value": "Stellgröße"
         }
     }

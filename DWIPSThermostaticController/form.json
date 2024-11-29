@@ -2,8 +2,14 @@
     "elements": [
         {
             "type": "SelectVariable",
-            "caption": "Sollwertvariable",
-            "name": "TargetValue",
+            "caption": "Target Temp Variable",
+            "name": "TargetTemp",
+            "validVariableTypes": [ 1, 2 ]
+        },
+        {
+            "type": "SelectVariable",
+            "caption": "Actual Temp Variable",
+            "name": "ActualTemp",
             "validVariableTypes": [ 1, 2 ]
         }
     ],
