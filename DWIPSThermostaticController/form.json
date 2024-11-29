@@ -1,5 +1,12 @@
 {
-    "elements": [],
+    "elements": [
+        {
+            "type": "SelectVariable",
+            "caption": "Sollwertvariable",
+            "name": "TargetValue",
+            "validVariableTypes": [ 1, 2 ]
+        }
+    ],
     "actions": [],
     "status": []
 }
