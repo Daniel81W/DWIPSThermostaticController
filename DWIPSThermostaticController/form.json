@@ -3,13 +3,13 @@
         {
             "type": "SelectVariable",
             "caption": "Target Temp Variable",
-            "name": "TargetTemp",
+            "name": "TargetTempVarID",
             "validVariableTypes": [ 1, 2 ]
         },
         {
             "type": "SelectVariable",
             "caption": "Actual Temp Variable",
-            "name": "ActualTemp",
+            "name": "ActualTempVarID",
             "validVariableTypes": [ 1, 2 ]
         }
     ],
