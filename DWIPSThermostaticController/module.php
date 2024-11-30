@@ -174,10 +174,23 @@ class DWIPSThermostaticController extends IPSModule
     }
 
     public function DetermineHVACMode():void{
+
+        if($this->GetValue('ForceHVACMode')){
+            $mode = $this->GetValue("HVACMode");
+            goto done;
+        }
+
+        //Window state
         if (IPS_VariableExists($this->ReadPropertyInteger('WindowStateVarID'))) {
             if(GetValueBoolean($this->ReadPropertyInteger('WindowStateVarID'))) {
-                $this->SetValue("HVACModeState", 4);
+                $mode = 4;
+                goto done;
             }
         }
+
+        $mode = $this->GetValue("HVACMode");
+
+        done:
+        $this->SetValue("HVACModeState", $mode);
     }
 }
