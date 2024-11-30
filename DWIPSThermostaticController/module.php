@@ -162,4 +162,12 @@ class DWIPSThermostaticController extends IPSModule
                 throw new Exception('Invalid ident');
         }
     }
+
+    public function determineHVACMode(){
+        if (IPS_VariableExists($this->ReadPropertyInteger('WindowStateVarID'))) {
+            if(GetValueBoolean($this->ReadPropertyInteger('WindowStateVarID'))) {
+                $this->SetValue("HVACModeState", 4);
+            }
+        }
+    }
 }
