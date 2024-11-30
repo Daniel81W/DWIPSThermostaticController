@@ -20,6 +20,7 @@ class DWIPSThermostaticController extends IPSModule
             IPS_SetVariableProfileAssociation($profilename, 3, $this->Translate("Economy"), "Moon", -1);
             IPS_SetVariableProfileAssociation($profilename, 4, $this->Translate("Building Protection"), "Warning", -1);
         }
+
         // Properties
         $this->RegisterPropertyInteger("TargetTempVarID",0);
         $this->RegisterPropertyInteger("ActualTempVarID", 0);
@@ -52,7 +53,7 @@ class DWIPSThermostaticController extends IPSModule
         parent::ApplyChanges();
     }
 
-    public function RequestAction(string $Ident, string $Value){
+    public function RequestAction($Ident, $Value){
         switch ($Ident) {
             case 'HVACMode':
                 $this->SetValue('HVACMode', $Value);
