@@ -8,6 +8,7 @@
             "Output Value": "Stellgröße",
             "HVACMode": "Heizungsbetriebsmodus",
             "HVAC Mode": "Betriebsmodus",
+            "HVAC Mode State": "RM Betriebsmodus",
             "Automatic": "Automatisch",
             "Comfort": "Komfort",
             "Standby": "Standby",
