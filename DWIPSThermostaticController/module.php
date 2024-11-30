@@ -56,7 +56,7 @@ class DWIPSThermostaticController extends IPSModule
         $this->EnableAction('HVACMode');
 
         $this->MaintainVariable('ForceHVACMode', $this->Translate('Force HVAC Mode'), 0, "", 5, true);
-        $this->EnableAction('HVACMode');
+        $this->EnableAction('ForceHVACMode');
 
         $this->MaintainVariable('HVACModeState', $this->Translate('HVAC Mode State'), 1, "DWIPS." . $this->Translate("HVACMode"), 6, true);
 
