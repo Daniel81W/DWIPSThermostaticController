@@ -112,7 +112,7 @@ class DWIPSThermostaticController extends IPSModule
     public function RequestAction($Ident, $Value){
         switch ($Ident) {
             case 'TargetTemp':
-                if (IPS_VariableExists($this->ReadPropertyInteger('TargetTempVarID')) == false) {
+                if (IPS_VariableExists($this->ReadPropertyInteger('TargetTempVarID'))) {
                     RequestAction($this->ReadPropertyInteger('TargetTempVarID'), $Value);                    
                 }else{
                     $this->SetValue('TargetTemp', $Value);
@@ -121,7 +121,7 @@ class DWIPSThermostaticController extends IPSModule
                 break;
 
             case 'ActualTemp':
-                if (IPS_VariableExists($this->ReadPropertyInteger('ActualTempVarID')) == false) {
+                if (IPS_VariableExists($this->ReadPropertyInteger('ActualTempVarID'))) {
                     RequestAction($this->ReadPropertyInteger('ActualTempVarID'), $Value);
                 }else{
                     $this->SetValue('ActualTemp', $Value);
