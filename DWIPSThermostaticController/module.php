@@ -35,6 +35,14 @@ class DWIPSThermostaticController extends IPSModule
         IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Heating"), "Flame", -1);
         IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Cooling"), "Snowflake", -1);
 
+        $profilename = "DWIPS." . $this->Translate("ForceMode");
+        if (IPS_VariableProfileExists($profilename)) {
+            IPS_DeleteVariableProfile($profilename);
+        }
+        IPS_CreateVariableProfile($profilename, 0);
+        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Normal"), "", -1);
+        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Forced"), "", -1);
+
         // Properties ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $this->RegisterPropertyInteger("TargetTempVarID",0);

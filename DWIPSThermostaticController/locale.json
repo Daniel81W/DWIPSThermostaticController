@@ -19,7 +19,8 @@
             "OperationMode": "Heizmodus",
             "Operation Mode": "Heizmodus",
             "Heating": "Heizen",
-            "Cooling": "Kühlen"
+            "Cooling": "Kühlen",
+            "Forced": "Zwang"
         }
     }
 }
