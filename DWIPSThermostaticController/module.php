@@ -103,6 +103,11 @@ class DWIPSThermostaticController extends IPSModule
         if (IPS_VariableExists($ActualTempVarID)) {
             $this->RegisterMessage($ActualTempVarID, VM_UPDATE);
         }
+
+        $WindowStateVarID = $this->ReadPropertyInteger('WindowStateVarID');
+        if (IPS_VariableExists($WindowStateVarID)) {
+            $this->RegisterMessage($WindowStateVarID, VM_UPDATE);
+        }
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
