@@ -135,6 +135,11 @@ class DWIPSThermostaticController extends IPSModule
                 $this->SendDebug("HVACMode:", $Value, 0);
                 break;
 
+            case 'ForceHVACMode':
+                $this->SetValue('HVACMode', $Value);
+                $this->SendDebug("ForceHVACMode:", $Value, 0);
+                break;
+
             case 'HVACModeState':
                 $this->SetValue('HVACModeState', $Value);
                 $this->SendDebug("HVACModeState:", $Value, 0);
