@@ -98,13 +98,18 @@ class DWIPSThermostaticController extends IPSModule
         if (IPS_VariableExists($TargetTempVarID)) {
             $this->RegisterMessage($TargetTempVarID, VM_UPDATE);
         }
+
+        $ActualTempVarID = $this->ReadPropertyInteger('ActualTempVarID');
+        if (IPS_VariableExists($ActualTempVarID)) {
+            $this->RegisterMessage($ActualTempVarID, VM_UPDATE);
+        }
     }
 
     public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
     {
         # IPS_LogMessage("MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
 
-        // Trigger ReCalc either timer based or based InputValue based
+        
         if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('TargetTempVarID')) {
             $this->SetValue('TargetTemp', $Data[0]);
         }
