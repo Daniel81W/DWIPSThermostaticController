@@ -104,7 +104,7 @@ class DWIPSThermostaticController extends IPSModule
 
         // Trigger ReCalc either timer based or based InputValue based
         if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('TargetTempVarID')) {
-            //$this->SetValue('TargetTemp', $Value);
+            $this->SetValue('TargetTemp', $Data[0]);
             $this->SendDebug("TargetTemp:", print_r($Data, true), 0);
         }
     }
