@@ -5,7 +5,9 @@
             "Target Temp Variable": "Solltemperaturvariable",
             "Actual Temp": "Isttemperatur",
             "Actual Temp Variable": "Isttemperaturvariable",
-            "Output Value": "Stellgröße"
+            "Output Value": "Stellgröße",
+            "HVACMode": "Heizungsbetriebsmodus",
+            "HVAC Mode": "Betriebsmodus"
         }
     }
 }
