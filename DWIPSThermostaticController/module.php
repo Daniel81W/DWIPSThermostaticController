@@ -47,6 +47,7 @@ class DWIPSThermostaticController extends IPSModule
 
         $this->RegisterPropertyInteger("TargetTempVarID",0);
         $this->RegisterPropertyInteger("ActualTempVarID", 0);
+        $this->RegisterPropertyInteger("WindowStateVarID", 0);
 
         // Attributes ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
