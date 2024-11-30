@@ -51,4 +51,16 @@ class DWIPSThermostaticController extends IPSModule
         //Never delete this line!
         parent::ApplyChanges();
     }
+
+    public function RequestAction(string $Ident, string $Value){
+        switch ($Ident) {
+            case 'HVACMode':
+                $this->SetValue('HVACMode', $Value);
+                $this->SendDebug("HVACMode:", $Value, 0);
+                break;
+
+            default:
+                throw new Exception('Invalid ident');
+        }
+    }
 }
