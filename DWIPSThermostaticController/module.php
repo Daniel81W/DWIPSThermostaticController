@@ -9,7 +9,8 @@ class DWIPSThermostaticController extends IPSModule
         //Never delete this line!
         parent::Create();
 
-        // Profiles
+        // Profiles ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(!IPS_VariableProfileExists($profilename)){
             IPS_CreateVariableProfile($profilename, 1);
@@ -48,20 +49,21 @@ class DWIPSThermostaticController extends IPSModule
 
         }
 
-        // Properties
+        // Properties ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         $this->RegisterPropertyInteger("TargetTempVarID",0);
         $this->RegisterPropertyInteger("ActualTempVarID", 0);
 
-        // Attributes
+        // Attributes ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // Variables
+        // Variables ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $this->MaintainVariable('OutputValue', $this->Translate('Output Value'), 1, '~Intensity.100', 1, true);
 
-        $this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), 2, '~Temperature', 2, true);
+        $this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), 2, '~Temperature.Room', 2, true);
         $this->EnableAction('TargetTemp');
 
-        $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), 2, '~Temperature', 3, true);
+        $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), 2, '~Temperature.Room', 3, true);
         $this->EnableAction('ActualTemp');
 
         $this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), 1, "DWIPS." . $this->Translate("HVACMode"), 4, true);
@@ -90,7 +92,7 @@ class DWIPSThermostaticController extends IPSModule
             }
         }
 
-        //Messages
+        //Messages ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $TargetTempVarID = $this->ReadPropertyInteger('TargetTempVarID');
         if (IPS_VariableExists($TargetTempVarID)) {
@@ -105,7 +107,6 @@ class DWIPSThermostaticController extends IPSModule
         // Trigger ReCalc either timer based or based InputValue based
         if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('TargetTempVarID')) {
             $this->SetValue('TargetTemp', $Data[0]);
-            $this->SendDebug("TargetTemp:", print_r($Data, true), 0);
         }
     }
 
