@@ -113,7 +113,7 @@ class DWIPSThermostaticController extends IPSModule
         switch ($Ident) {
             case 'TargetTemp':
                 if (IPS_VariableExists($this->ReadPropertyInteger('TargetTempVarID')) == false) {
-                    SetValue($this->ReadPropertyInteger('TargetTempVarID'), $Value);                    
+                    RequestAction($this->ReadPropertyInteger('TargetTempVarID'), $Value);                    
                 }else{
                     $this->SetValue('TargetTemp', $Value);
                 }
