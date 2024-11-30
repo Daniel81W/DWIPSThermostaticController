@@ -10,7 +10,7 @@ class DWIPSThermostaticController extends IPSModule
         parent::Create();
 
         // Profiles
-        $profilename = "DWIPS" . $this->Translate("HVACMode");
+        $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(!IPS_VariableProfileExists($profilename)){
             IPS_CreateVariableProfile($profilename, 1);
             IPS_SetVariableProfileValues($profilename, 0, 4, 1);
@@ -31,7 +31,7 @@ class DWIPSThermostaticController extends IPSModule
             
         }
 
-        $profilename = "DWIPS" . $this->Translate("OperationMode");
+        $profilename = "DWIPS." . $this->Translate("OperationMode");
         if (!IPS_VariableProfileExists($profilename)) {
             IPS_CreateVariableProfile($profilename, 1);
             IPS_SetVariableProfileValues($profilename, 0, 2, 1);
@@ -64,10 +64,10 @@ class DWIPSThermostaticController extends IPSModule
         $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), 2, '~Temperature', 3, true);
         $this->EnableAction('ActualTemp');
 
-        $this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), 1, "DWIPS" . $this->Translate("HVACMode"), 4, true);
+        $this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), 1, "DWIPS." . $this->Translate("HVACMode"), 4, true);
         $this->EnableAction('HVACMode');
 
-        $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), 1, "DWIPS" . $this->Translate("OperationMode"), 4, true);
+        $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), 1, "DWIPS." . $this->Translate("OperationMode"), 4, true);
         $this->EnableAction('OperationMode');
     }
 
@@ -88,6 +88,12 @@ class DWIPSThermostaticController extends IPSModule
             case 'HVACMode':
                 $this->SetValue('HVACMode', $Value);
                 $this->SendDebug("HVACMode:", $Value, 0);
+                break;
+
+
+            case 'OperationMode':
+                $this->SetValue('OperationMode', $Value);
+                $this->SendDebug("OperationMode:", $Value, 0);
                 break;
 
             default:
