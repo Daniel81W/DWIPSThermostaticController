@@ -7,7 +7,12 @@
             "Actual Temp Variable": "Isttemperaturvariable",
             "Output Value": "Stellgröße",
             "HVACMode": "Heizungsbetriebsmodus",
-            "HVAC Mode": "Betriebsmodus"
+            "HVAC Mode": "Betriebsmodus",
+            "Automatic": "Automatisch",
+            "Comfort": "Komfort",
+            "Standby": "Standby",
+            "Economy": "Nachtbetrieb",
+            "Building Protection": "Frost-/Hitzeschutz"
         }
     }
 }
