@@ -12,7 +12,11 @@
             "Comfort": "Komfort",
             "Standby": "Standby",
             "Economy": "Nachtbetrieb",
-            "Building Protection": "Frost-/Hitzeschutz"
+            "Building Protection": "Frost-/Hitzeschutz",
+            "OperationMode": "Heizmodus",
+            "Operation Mode": "Heizmodus",
+            "Heating": "Heizen",
+            "Cooling": "Kühlen"
         }
     }
 }
