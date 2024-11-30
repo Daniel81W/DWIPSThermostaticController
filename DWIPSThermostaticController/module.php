@@ -69,6 +69,7 @@ class DWIPSThermostaticController extends IPSModule
 
         $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), 1, "DWIPS." . $this->Translate("OperationMode"), 4, true);
         $this->EnableAction('OperationMode');
+
     }
 
     public function Destroy()
@@ -81,15 +82,57 @@ class DWIPSThermostaticController extends IPSModule
     {
         //Never delete this line!
         parent::ApplyChanges();
+
+        //Delete all registrations in order to readd them
+        foreach ($this->GetMessageList() as $senderID => $messages) {
+            foreach ($messages as $message) {
+                $this->UnregisterMessage($senderID, $message);
+            }
+        }
+
+        //Messages
+
+        $TargetTempVarID = $this->ReadPropertyInteger('TargetTempVarID');
+        if (IPS_VariableExists($TargetTempVarID)) {
+            $this->RegisterMessage($TargetTempVarID, VM_UPDATE);
+        }
+    }
+
+    public function MessageSink($TimeStamp, $SenderID, $Message, $Data)
+    {
+        # IPS_LogMessage("MessageSink", "Message from SenderID ".$SenderID." with Message ".$Message."\r\n Data: ".print_r($Data, true));
+
+        // Trigger ReCalc either timer based or based InputValue based
+        if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('TargetTempVarID')) {
+            //$this->SetValue('TargetTemp', $Value);
+            $this->SendDebug("TargetTemp:", print_r($Data, true), 0);
+        }
     }
 
     public function RequestAction($Ident, $Value){
         switch ($Ident) {
+            case 'TargetTemp':
+                if (IPS_VariableExists($this->ReadPropertyInteger('TargetTempVarID')) == false) {
+                    RequestAction($this->ReadPropertyInteger('TargetTempVarID'), $Value);                    
+                }else{
+                    $this->SetValue('TargetTemp', $Value);
+                }
+                $this->SendDebug("TargetTemp:", $Value, 0);
+                break;
+
+            case 'ActualTemp':
+                if (IPS_VariableExists($this->ReadPropertyInteger('ActualTempVarID')) == false) {
+                    RequestAction($this->ReadPropertyInteger('ActualTempVarID'), $Value);
+                }else{
+                    $this->SetValue('ActualTemp', $Value);
+                }
+                $this->SendDebug("ActualTemp:", $Value, 0);
+                break;
+
             case 'HVACMode':
                 $this->SetValue('HVACMode', $Value);
                 $this->SendDebug("HVACMode:", $Value, 0);
                 break;
-
 
             case 'OperationMode':
                 $this->SetValue('OperationMode', $Value);
