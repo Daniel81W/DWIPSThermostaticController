@@ -1,17 +1,8 @@
 {
     "elements": [
-        {
-            "type": "SelectVariable",
-            "caption": "Target Temp Variable",
-            "name": "TargetTempVarID",
-            "validVariableTypes": [ 1, 2 ]
-        },
-        {
-            "type": "SelectVariable",
-            "caption": "Actual Temp Variable",
-            "name": "ActualTempVarID",
-            "validVariableTypes": [ 1, 2 ]
-        }
+        {"type": "SelectVariable", "caption": "Target Temp Variable", "name": "TargetTempVarID", "validVariableTypes": [ 1, 2 ]},
+        {"type": "SelectVariable", "caption": "Actual Temp Variable", "name": "ActualTempVarID", "validVariableTypes": [ 1, 2 ]},
+        {"type": "SelectVariable", "caption": "Window State Variable", "name": "WindowStateVarID", "validVariableTypes": [ 0 ]}
     ],
     "actions": [],
     "status": []
