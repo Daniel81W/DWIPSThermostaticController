@@ -64,7 +64,7 @@ class DWIPSThermostaticController extends IPSModule
         $this->EnableAction('TargetTemp');
 
         $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), 2, '~Temperature.Room', 3, true);
-        $this->EnableAction('ActualTemp');
+        //$this->EnableAction('ActualTemp');
 
         $this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), 1, "DWIPS." . $this->Translate("HVACMode"), 4, true);
         $this->EnableAction('HVACMode');
@@ -107,6 +107,10 @@ class DWIPSThermostaticController extends IPSModule
         // Trigger ReCalc either timer based or based InputValue based
         if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('TargetTempVarID')) {
             $this->SetValue('TargetTemp', $Data[0]);
+        }
+
+        if (($Message == VM_UPDATE) and $SenderID == $this->ReadPropertyInteger('ActualTempVarID')) {
+            $this->SetValue('ActualTemp', $Data[0]);
         }
     }
 
