@@ -3,6 +3,8 @@
 
 declare(strict_types=1);
 
+require_once __DIR__ . '/../lib/DWIPS_VariableProfileAider.php';
+
 /** @noinspection PhpUnused */
 class DWIPSThermostaticController extends IPSModule
 {
@@ -12,42 +14,14 @@ class DWIPSThermostaticController extends IPSModule
         parent::Create();
 
         // Profiles ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $profilename = "DWIPS." . $this->Translate("HVACMode");
-        if(IPS_VariableProfileExists($profilename)) {
-            IPS_DeleteVariableProfile($profilename);
-        }
-        IPS_CreateVariableProfile($profilename, 1);
-        IPS_SetVariableProfileValues($profilename, 0, 4, 1);
-        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Automatic"), "Clock", -1);
-        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Comfort"), "Presence-100", -1);
-        IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Standby"), "Presence-0", -1);
-        IPS_SetVariableProfileAssociation($profilename, 3, $this->Translate("Economy"), "Moon", -1);
-        IPS_SetVariableProfileAssociation($profilename, 4, $this->Translate("Building Protection"), "Warning", -1);
-
-        $profilename = "DWIPS." . $this->Translate("OperationMode");
-        if (IPS_VariableProfileExists($profilename)) {
-            IPS_DeleteVariableProfile($profilename);
-        }
-        IPS_CreateVariableProfile($profilename, 1);
-        IPS_SetVariableProfileValues($profilename, 0, 2, 1);
-        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Automatic"), "Clock", -1);
-        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Heating"), "Flame", -1);
-        IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Cooling"), "Snowflake", -1);
-
-        $profilename = "DWIPS." . $this->Translate("ForceMode");
-        if (IPS_VariableProfileExists($profilename)) {
-            IPS_DeleteVariableProfile($profilename);
-        }
-        IPS_CreateVariableProfile($profilename, 0);
-        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Normal"), "", -1);
-        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Forced"), "", -1);
+        $this->UpdateVariableProfiles();
 
         // Properties ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         $this->RegisterPropertyInteger("TargetTempVarID",0);
         $this->RegisterPropertyInteger("ActualTempVarID", 0);
         $this->RegisterPropertyInteger("WindowStateVarID", 0);
+        $this->RegisterPropertyInteger("HeatingSystemOperationModeVarID", 0);
 
         // Attributes ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,6 +45,10 @@ class DWIPSThermostaticController extends IPSModule
 
         $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), 1, "DWIPS." . $this->Translate("OperationMode"), 7, true);
         $this->EnableAction('OperationMode');
+
+        $this->MaintainVariable('OperationModeState', $this->Translate('Operation Mode State'), 0, "DWIPS." . $this->Translate("OperationMode"), 8, true);
+        $this->EnableAction('OperationMode');
+
 
     }
 
@@ -175,6 +153,15 @@ class DWIPSThermostaticController extends IPSModule
         }
     }
 
+    public function CalculateOutput(){
+        if (IPS_VariableExists($this->ReadPropertyInteger('HeatingSystemOperationModeVarID'))) {
+            if(GetValueBoolean($this->ReadPropertyInteger('HeatingSystemOperationModeVarID'))) {
+                $mode = 4;
+                goto done;
+            }
+        }
+    }
+
     public function DetermineHVACMode():void{
 
         if($this->GetValue('ForceHVACMode')){
@@ -195,4 +182,47 @@ class DWIPSThermostaticController extends IPSModule
         done:
         $this->SetValue("HVACModeState", $mode);
     }
+
+    private function UpdateVariableProfiles(){
+        $profilename = "DWIPS." . $this->Translate("HVACMode");
+        if(IPS_VariableProfileExists($profilename)) {
+            IPS_DeleteVariableProfile($profilename);
+        }
+        IPS_CreateVariableProfile($profilename, 1);
+        IPS_SetVariableProfileValues($profilename, 0, 4, 1);
+        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Automatic"), "Clock", -1);
+        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Comfort"), "Presence-100", -1);
+        IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Standby"), "Presence-0", -1);
+        IPS_SetVariableProfileAssociation($profilename, 3, $this->Translate("Economy"), "Moon", -1);
+        IPS_SetVariableProfileAssociation($profilename, 4, $this->Translate("Building Protection"), "Warning", -1);
+
+        $profilename = "DWIPS." . $this->Translate("OperationMode");
+        if (IPS_VariableProfileExists($profilename)) {
+            IPS_DeleteVariableProfile($profilename);
+        }
+        IPS_CreateVariableProfile($profilename, 1);
+        IPS_SetVariableProfileValues($profilename, 0, 2, 1);
+        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Automatic"), "Clock", -1);
+        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Heating"), "Flame", -1);
+        IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Cooling"), "Snowflake", -1);
+
+        $profilename = "DWIPS." . $this->Translate("ForceMode");
+        if (IPS_VariableProfileExists($profilename)) {
+            IPS_DeleteVariableProfile($profilename);
+        }
+        IPS_CreateVariableProfile($profilename, 0);
+        IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Normal"), "", -1);
+        IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Forced"), "", -1);
+        /*
+                $profilename = "DWIPS." . $this->Translate("OperationModeState");
+                if (IPS_VariableProfileExists($profilename)) {
+                    IPS_DeleteVariableProfile($profilename);
+                }
+                IPS_CreateVariableProfile($profilename, 0);
+                IPS_SetVariableProfileAssociation($profilename, 0, $this->Translate("Normal"), "", -1);
+                IPS_SetVariableProfileAssociation($profilename, 1, $this->Translate("Forced"), "", -1);
+        */
+    }
+
+
 }

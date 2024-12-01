@@ -4,7 +4,8 @@
             "type": "ExpansionPanel", "caption": "Variable", "expanded": true, "items": [
                 { "type": "SelectVariable", "caption": "Target Temp Variable", "name": "TargetTempVarID", "validVariableTypes": [1, 2]},
                 { "type": "SelectVariable", "caption": "Actual Temp Variable", "name": "ActualTempVarID", "validVariableTypes": [1, 2]},
-                { "type": "SelectVariable", "caption": "Window State Variable", "name": "WindowStateVarID", "validVariableTypes": [0] }
+                { "type": "SelectVariable", "caption": "Window State Variable", "name": "WindowStateVarID", "validVariableTypes": [0] },
+                { "type": "SelectVariable", "caption": "Heating System Operation Mode Variable", "name": "HeatingSystemOperationModeVarID", "validVariableTypes": [0] }
             ]
         }
     ],
