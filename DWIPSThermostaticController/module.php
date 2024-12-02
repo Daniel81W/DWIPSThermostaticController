@@ -33,7 +33,8 @@ class DWIPSThermostaticController extends IPSModule
         $this->CreateOrUpdateVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100');
         //$this->MaintainVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100', 1, true);
 
-        $this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 2, true);
+        $this->CreateOrUpdateVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room');
+        //$this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 2, true);
         $this->EnableAction('TargetTemp');
 
         $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 3, true);
