@@ -4,11 +4,13 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../lib/aider/DWIPS_VariableProfileAider.php';
+require_once __DIR__ . '/../lib/aider/DWIPS_VariableAider.php';
 
 /** @noinspection PhpUnused */
 class DWIPSThermostaticController extends IPSModule
 {
     use DWIPS\Aider\DWIPS_VariableProfileAider;
+    use DWIPS\Aider\DWIPS_VariableAider;
 
     public function Create()
     {
@@ -28,8 +30,8 @@ class DWIPSThermostaticController extends IPSModule
         // Attributes ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Variables ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        $this->MaintainVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100', 1, true);
+        $this->CreateOrUpdateVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100');
+        //$this->MaintainVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100', 1, true);
 
         $this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 2, true);
         $this->EnableAction('TargetTemp');
