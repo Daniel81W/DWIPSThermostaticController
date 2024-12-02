@@ -1,0 +1,3 @@
+[submodule "lib/aider"]
+	path = lib/aider
+	url = https://github.com/Daniel81W/DWIPSSymconAider
