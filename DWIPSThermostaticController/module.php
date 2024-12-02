@@ -191,9 +191,9 @@ class DWIPSThermostaticController extends IPSModule
             array(1, $this->Translate("Comfort"), "Presence-100", -1),
             array(2, $this->Translate("Standby"), "Presence-0", -1),
             array(3, $this->Translate("Economy"), "Moon", -1),
-            array(4, $this->Translate("Building Protection"), "Warning", -1),
+            array(5, $this->Translate("Building Protection"), "Warning", -1),
             ),
-            0,4,1
+            0,5,1
         );/*
         $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(IPS_VariableProfileExists($profilename)) {
