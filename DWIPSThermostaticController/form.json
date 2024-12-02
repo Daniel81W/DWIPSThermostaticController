@@ -12,8 +12,7 @@
                     "type": "ExpansionPanel", "caption": "Parameter", "expanded": true, "items": [
                         { "type": "NumberSpinner", "caption": "Kp", "name": "Kp"},
                         { "type": "NumberSpinner", "caption": "Ki", "name": "Ki"},
-                        { "type": "NumberSpinner", "caption": "Kd", "name": "Kd"},
-                        { "type": "Select", "caption": "Heizungstyp", "name": "HeatingSystemType"}
+                        { "type": "NumberSpinner", "caption": "Kd", "name": "Kd"}
                     ]
         }
     ],
