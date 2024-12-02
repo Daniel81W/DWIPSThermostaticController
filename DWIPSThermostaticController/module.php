@@ -3,8 +3,8 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../lib/aider/DWIPS_VariableProfileAider.php';
-require_once __DIR__ . '/../lib/aider/DWIPS_VariableAider.php';
+require_once __DIR__ . '/../libs/aider/DWIPS_VariableProfileAider.php';
+require_once __DIR__ . '/../libs/aider/DWIPS_VariableAider.php';
 
 /** @noinspection PhpUnused */
 class DWIPSThermostaticController extends IPSModule
