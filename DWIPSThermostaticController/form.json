@@ -7,6 +7,14 @@
                 { "type": "SelectVariable", "caption": "Window State Variable", "name": "WindowStateVarID", "validVariableTypes": [0] },
                 { "type": "SelectVariable", "caption": "Heating System Operation Mode Variable", "name": "HeatingSystemOperationModeVarID", "validVariableTypes": [0] }
             ]
+        },
+        {
+                    "type": "ExpansionPanel", "caption": "Parameter", "expanded": true, "items": [
+                        { "type": "NumberSpinner", "caption": "Kp", "name": "Kp"},
+                        { "type": "NumberSpinner", "caption": "Ki", "name": "Ki"},
+                        { "type": "NumberSpinner", "caption": "Kd", "name": "Kd"},
+                        { "type": "Select", "caption": "Heizungstyp", "name": "HeatingSystemType"}
+                    ]
         }
     ],
     "actions": [],
