@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../lib/DWIPS_VariableProfileAider.php';
+require_once __DIR__ . '/../lib/aider/DWIPS_VariableProfileAider.php';
 
 /** @noinspection PhpUnused */
 class DWIPSThermostaticController extends IPSModule
@@ -157,7 +157,7 @@ class DWIPSThermostaticController extends IPSModule
         if (IPS_VariableExists($this->ReadPropertyInteger('HeatingSystemOperationModeVarID'))) {
             if(GetValueBoolean($this->ReadPropertyInteger('HeatingSystemOperationModeVarID'))) {
                 $mode = 4;
-                goto done;
+                //goto done;
             }
         }
     }
@@ -187,7 +187,6 @@ class DWIPSThermostaticController extends IPSModule
         $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(IPS_VariableProfileExists($profilename)) {
             IPS_DeleteVariableProfile($profilename);
-            echo "";
         }
         IPS_CreateVariableProfile($profilename, 1);
         IPS_SetVariableProfileValues($profilename, 0, 4, 1);
