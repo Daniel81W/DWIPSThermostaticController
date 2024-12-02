@@ -187,6 +187,7 @@ class DWIPSThermostaticController extends IPSModule
         $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(IPS_VariableProfileExists($profilename)) {
             IPS_DeleteVariableProfile($profilename);
+            echo "";
         }
         IPS_CreateVariableProfile($profilename, 1);
         IPS_SetVariableProfileValues($profilename, 0, 4, 1);
