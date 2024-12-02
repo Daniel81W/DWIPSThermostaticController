@@ -8,6 +8,8 @@ require_once __DIR__ . '/../lib/aider/DWIPS_VariableProfileAider.php';
 /** @noinspection PhpUnused */
 class DWIPSThermostaticController extends IPSModule
 {
+    use DWIPS\Aider\DWIPS_VariableProfileAider;
+
     public function Create()
     {
         //Never delete this line!
@@ -184,6 +186,15 @@ class DWIPSThermostaticController extends IPSModule
     }
 
     private function UpdateVariableProfiles(){
+        $this->MaintainVariableProfileAssoc(VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), '', '', '', array(
+            array(0, $this->Translate("Automatic"), "Clock", -1),
+            array(1, $this->Translate("Comfort"), "Presence-100", -1),
+            array(2, $this->Translate("Standby"), "Presence-0", -1),
+            array(3, $this->Translate("Economy"), "Moon", -1),
+            array(4, $this->Translate("Building Protection"), "Warning", -1),
+            ),
+            0,4,1
+        );/*
         $profilename = "DWIPS." . $this->Translate("HVACMode");
         if(IPS_VariableProfileExists($profilename)) {
             IPS_DeleteVariableProfile($profilename);
@@ -195,7 +206,7 @@ class DWIPSThermostaticController extends IPSModule
         IPS_SetVariableProfileAssociation($profilename, 2, $this->Translate("Standby"), "Presence-0", -1);
         IPS_SetVariableProfileAssociation($profilename, 3, $this->Translate("Economy"), "Moon", -1);
         IPS_SetVariableProfileAssociation($profilename, 4, $this->Translate("Building Protection"), "Warning", -1);
-
+*/
         $profilename = "DWIPS." . $this->Translate("OperationMode");
         if (IPS_VariableProfileExists($profilename)) {
             IPS_DeleteVariableProfile($profilename);
