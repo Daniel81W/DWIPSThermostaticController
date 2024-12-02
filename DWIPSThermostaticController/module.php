@@ -48,7 +48,7 @@ class DWIPSThermostaticController extends IPSModule
         $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), 1, "DWIPS." . $this->Translate("OperationMode"), 7, true);
         $this->EnableAction('OperationMode');
 
-        $this->MaintainVariable('OperationModeState', $this->Translate('Operation Mode State'), 0, "DWIPS." . $this->Translate("OperationMode"), 8, true);
+        $this->MaintainVariable('OperationModeState', $this->Translate('Operation Mode State'), 1, "DWIPS." . $this->Translate("OperationMode"), 8, true);
         $this->EnableAction('OperationMode');
 
 
