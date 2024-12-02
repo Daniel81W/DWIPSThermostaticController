@@ -33,26 +33,33 @@ class DWIPSThermostaticController extends IPSModule
         $this->CreateOrUpdateVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100');
         //$this->MaintainVariable('OutputValue', $this->Translate('Output Value'), VARIABLETYPE_INTEGER, '~Intensity.100', 1, true);
 
-        $this->CreateOrUpdateVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room');
+        $this->CreateOrUpdateVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', true);
         //$this->MaintainVariable('TargetTemp', $this->Translate('Target Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 2, true);
-        $this->EnableAction('TargetTemp');
+        //$this->EnableAction('TargetTemp');
 
-        $this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 3, true);
+        $this->CreateOrUpdateVariable('ActualTemp', $this->Translate('Actual Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room');
+        //$this->MaintainVariable('ActualTemp', $this->Translate('Actual Temp'), VARIABLETYPE_FLOAT, '~Temperature.Room', 3, true);
         //$this->EnableAction('ActualTemp');
 
-        $this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), 4, true);
-        $this->EnableAction('HVACMode');
+        $this->CreateOrUpdateVariable('HVACMode', $this->Translate('HVAC Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), true);
+        //$this->MaintainVariable('HVACMode', $this->Translate('HVAC Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), 4, true);
+        //$this->EnableAction('HVACMode');
 
-        $this->MaintainVariable('ForceHVACMode', $this->Translate('Force HVAC Mode'), VARIABLETYPE_BOOLEAN, "DWIPS." . $this->Translate("ForceMode"), 5, true);
-        $this->EnableAction('ForceHVACMode');
+        $this->CreateOrUpdateVariable('ForceHVACMode', $this->Translate('Force HVAC Mode'), VARIABLETYPE_BOOLEAN, "DWIPS." . $this->Translate("ForceMode"), true);
+        //$this->MaintainVariable('ForceHVACMode', $this->Translate('Force HVAC Mode'), VARIABLETYPE_BOOLEAN, "DWIPS." . $this->Translate("ForceMode"), 5, true);
+        //$this->EnableAction('ForceHVACMode');
 
-        $this->MaintainVariable('HVACModeState', $this->Translate('HVAC Mode State'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), 6, true);
+        $this->CreateOrUpdateVariable('HVACModeState', $this->Translate('HVAC Mode State'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"));
+        //$this->MaintainVariable('HVACModeState', $this->Translate('HVAC Mode State'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("HVACMode"), 6, true);
 
-        $this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("OperationMode"), 7, true);
-        $this->EnableAction('OperationMode');
+        $this->CreateOrUpdateVariable('OperationMode', $this->Translate('Operation Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("OperationMode"), true);
+        //$this->MaintainVariable('OperationMode', $this->Translate('Operation Mode'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("OperationMode"), 7, true);
+        //$this->EnableAction('OperationMode');
 
+        $this->CreateOrUpdateVariable('OperationModeState', $this->Translate('Operation Mode State'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("OperationMode"), true);
         $this->MaintainVariable('OperationModeState', $this->Translate('Operation Mode State'), VARIABLETYPE_INTEGER, "DWIPS." . $this->Translate("OperationMode"), 8, true);
         $this->EnableAction('OperationMode');
+
 
 
     }
